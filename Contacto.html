@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>Curriculum Vitae GAVP</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <link href="css/starter-template.css" rel="stylesheet">
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/cssGenerico.css">
+  </head>
+
+  <body>
+    <div class="navbar-wrapper" id="div1">
+      <div class="container" id="div2">
+
+			<nav class="navbar navbar-light navbar-inverse" style="background-color: #000000;" id="page-header">
+			  <div class="container">
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				  <a class="navbar-brand" href="index.html">
+            BAM Tejendos Ideas
+          </a>
+				</div>
+				<div id="navbar" class="collapse navbar-collapse">
+				  <ul role="presentation" class="nav navbar-nav">
+					<li role="presentation">
+            <a href="index.html">
+            Misión
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="Vision.html">
+            Visión
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="TProductos.html">
+            Tipo de Productos
+            </a>
+          </li>
+          <li role="presentation">
+            <a href="Galeria.html">
+            Galerias
+            </a>
+          </li>
+          <li role="presentation" class="active">
+            <a>
+              Contacto
+            </a>
+          </li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+
+        <div class="jumbotron" id="perfil">
+          <from id="fContacto" name="fContacto">
+            <div class="form-group">
+              <label for="exampleInputName">
+                Nombre: 
+              </label>
+              <div class="input-group" id="divNombre">
+                <input type="text" class="form-control" index="txtNombre" name="txtNombre" placeholder="Nombre" size="300" onblur="fCCondD('txtNombre',this)" value="">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" id="iWarningNombre" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" id="iErrorNombre" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-ok form-control-feedback" id="iOKNombre" aria-hidden="true"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail">
+                E-Mail:
+              </label>
+              <div class="input-group" id="divEmail">
+                <span class="input-group-addon">@</span>
+                <input type="email" class="form-control" index="txtEmail" name="txtEmail" placeholder="E-mail" onblur="fCCondD('txtEmail',this)" value="">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" id="iWarningEmail" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" id="iErrorEmail" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-ok form-control-feedback" id="iOKEmail" aria-hidden="true"></span>
+                <!--<span id="inputSuccess2Status" class="sr-only">(success)</span>-->
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="exampleInputContext">
+                Comentario:
+              </label>
+              <div class="input-group" id="divMensaje">
+                <textarea class="form-control" rows="3" cols="300" index="tAreaContenido" id="tAreaContenido" name="tAreaContenido" onblur="fCCondD('tAreaContenido',this)" value=""></textarea>
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback" id="iWarningACont" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-remove form-control-feedback" id="iErrorACont" aria-hidden="true"></span>
+                <span class="glyphicon glyphicon-ok form-control-feedback" id="iOKACont" aria-hidden="true"></span>
+              </div>
+            </div>
+            <button type="button" class="btn btn-primary" style="background-color: #000000;" id="btnEnviar" name="btnEnviar">Enviar</button>
+          </from>
+        </div>
+
+
+      </div>
+    </div>
+    <script src="js/jquery-min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $('#iWarningNombre').hide();
+        $('#iErrorNombre').hide();
+        $('#iOKNombre').hide();
+
+        $('#iWarningEmail').hide();
+        $('#iErrorEmail').hide();
+        $('#iOKEmail').hide();
+
+        $('#iWarningACont').hide();
+        $('#iErrorACont').hide();
+        $('#iOKACont').hide();
+
+        $('#btnEnviar').click(function(){
+          var $btn = $(this).button('loading');
+          //var $txtEmail = $('#txtEmail').val();
+
+          if($('#txtNombre').val()==null){
+            fValNombre($('#txtNombre').val());
+          }
+
+          if($('#txtEmail').val()==null){
+            fValEmail($('#txtEmail').val());
+          }
+
+          if($('#tAreaContenido').val()==""){
+            fValContenido($('#tAreaContenido').val());
+          }
+          
+          $btn.button('reset');
+        });
+      });
+
+      function fCCondD(nombre, campo){
+        var text = campo.value;
+        if(nombre == 'txtNombre'){
+          fValNombre(text);
+        }else if(nombre == 'txtEmail'){
+          fValEmail(text);
+        }else if(nombre=='tAreaContenido'){
+          fValContenido(text);
+        }
+      }
+
+      function fValNombre(dato){
+        if(dato=="" || dato==null){
+            $('#iErrorNombre').show();
+            $('#iOKNombre').hide();
+            $('#divNombre').addClass('has-error');
+          }else{
+            $('#iOKNombre').show();
+            $('#iErrorNombre').hide();
+            $('#divNombre').addClass('has-success');
+          }
+      }
+
+      function fValEmail(dato){
+        if(dato=="" || dato==null){
+            $('#iErrorEmail').show();
+            $('#iOKEmail').hide();
+            $('#divEmail').addClass('has-error');
+          }else{
+            $('#iOKEmail').show();
+            $('#iErrorEmail').hide();
+            $('#divEmail').addClass('has-success');
+          }
+      }
+
+      function fValContenido(dato){
+        if(dato=="" || dato==null){
+            $('#iErrorACont').show();
+            $('#iOKACont').hide();
+            $('#divMensaje').addClass('has-error');
+          }else{
+            $('#iOKACont').show();
+            $('#iErrorACont').hide();
+            $('#divMensaje').addClass('has-success');
+          }
+      }
+    </script>
+  </body>
+</html>
