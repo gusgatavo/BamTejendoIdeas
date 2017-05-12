@@ -13,54 +13,31 @@
     <link href="css/starter-template.css" rel="stylesheet">
     <script src="js/ie-emulation-modes-warning.js"></script>
     <link rel="stylesheet" type="text/css" href="css/cssGenerico.css">
+    <script src="js/jquery-min.js"></script>
+    <!--<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script type="text/javascript">
+      function CargaMenu(){
+          var IdMenu = document.getElementById("IdMenu").value;
+          var Datos = {"IdMenu":IdMenu};
+          var URL = "Menu.php";
+          var id_Div = "#MENU";
+           $.post(URL, Datos, function(responseText){
+              $(id_Div).html(responseText);
+          });
+       }
+    </script>
   </head>
 
-  <body>
+  <body onload="CargaMenu();">
+    <input type="text" name="IdMenu" id="IdMenu" value="perfil">
     <div class="navbar-wrapper" id="div1">
       <div class="container" id="div2">
 
 			<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #FFCC99;" id="page-header">
-			  <div class="container">
-				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-				  <a class="navbar-brand" href="index.html">
-            BAM Tejendos Ideas
-          </a>
-				</div>
-				<div id="navbar" class="collapse navbar-collapse">
-				  <ul role="presentation" class="nav navbar-nav">
-					<li role="presentation" class="active">
-					  <a>
-						Misión
-					  </a>
-					</li>
-					<li role="presentation">
-					  <a href="Vision.html">
-						Visión
-					  </a>
-					</li>
-					<li role="presentation">
-					  <a href="TProductos.html">
-						Tipo de Productos
-					  </a>
-					</li>
-					<li role="presentation">
-					  <a href="Galeria.html">
-						Galerias
-					  </a>
-					</li>
-          <li role="presentation">
-            <a href="Contacto.html">
-              Contacto
-            </a>
-          </li>
-				  </ul>
-				</div>
+			  <div class="container" id="MENU">
+				
 			  </div>
 			</nav>
 
@@ -93,9 +70,5 @@
 
       </div>
     </div>
-    <script src="js/jquery-min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

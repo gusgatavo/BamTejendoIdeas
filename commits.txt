@@ -1,0 +1,11 @@
+commit 6cf89a54608544858c236be8ee28e6f486e22d11
+Author: Gustavo <gustavino_tavo@hotmail.com>
+Date:   Fri Apr 21 22:19:40 2017 -0300
+
+    Se agregan todos los archivos del proyecto
+
+commit 6444b1fd51a1dc5b164e11e66b4d771a28458a42
+Author: Gustavo <gustavino_tavo@hotmail.com>
+Date:   Fri Apr 21 22:18:30 2017 -0300
+
+    Se agregar el index.html al versionamiento

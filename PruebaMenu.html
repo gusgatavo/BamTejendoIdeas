@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript">
+		 $(document).ready(function(){
+		 	
+		 });
+
+		 function Cargar(){
+		 	$.load('Menu.html', "", function(responseText){
+				$('#MENU').html(responseText);
+			});
+		 }
+	</script>
+</head>
+<body>
+<input type="button" onclick="Cargar();" value="Cargar">
+<div id="MENU"></div>
+</body>
+</html>
